@@ -10,6 +10,7 @@ import {
   signOut,
   updateProfile
 } from 'firebase/auth'
+
 import React, { createContext, useEffect, useState } from 'react'
 import app from '../firebase/firebase.config'
 

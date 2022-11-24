@@ -1,29 +1,17 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import logo from '../../assets/logo-1.png';
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  
+  const { user, logout } = useContext(AuthContext);
 
-  const handleLogOut = () => {
-    logOut()
-      .then(() => {})
-      .catch((err) => console.log(err));
-  };
   const menuItems = (
     <>
       {" "}
       <li>
         <Link to={"/"}>Home</Link>
-      </li>
-      <li>
-        <Link to={"/"}>About</Link>
-      </li>
-      <li>
-        <Link to={"/"}>Appointment</Link>
-      </li>
-      <li>
-        <Link to={"/"}>Reviews</Link>
       </li>
       <li>
         <Link to={"/"}>Contact Us</Link>
@@ -34,7 +22,7 @@ const Navbar = () => {
             <Link to="/dashboard">Dashboard</Link>
           </li>
           <li>
-            <button onClick={handleLogOut}>Sign out</button>
+            <button onClick={logout}>Sign out</button>
           </li>
         </>
       ) : (
@@ -72,8 +60,8 @@ const Navbar = () => {
             {menuItems}
           </ul>
         </div>
-        <Link to="/" className=" px-1 py-2 font-bold text-xl">
-          Puran Bazar
+        <Link to="/" className="  px-1 py-2 font-bold text-xl text-secondary">
+          <img className="w-1/3" src={logo} alt="" />
         </Link>
       </div>
 
