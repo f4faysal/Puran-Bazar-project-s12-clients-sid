@@ -1,16 +1,10 @@
-import './App.css';
-import logo from './logo.svg';
-
+import { RouterProvider } from "react-router-dom";
+import "./App.css";
+import router from "./Routes/routes";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-    
-      </header>
+    <div className="max-w-[1440px] mx-auto">
+      <RouterProvider router={router}></RouterProvider>
     </div>
   );
 }
