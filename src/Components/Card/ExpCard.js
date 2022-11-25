@@ -2,14 +2,16 @@ import { StarIcon } from "@heroicons/react/24/solid";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+
+
 const ExpCard = ({ categorie }) => {
   const [extaDetles, srtExtaDetles] = useState(false);
-  const { logo, _id } = categorie;
+  const { logo, _id ,slug} = categorie;
   return (
-    <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
+    <div className="lg:w-1/4 md:w-1/2 p-4 w-full ">
       <Link
-        to="/coming-soon"
-        className="block relative h-32 w-40 rounded overflow-hidden bg-[#def4fa] " 
+        to={`/categoriseItem/${slug}`}
+        className="block relative h-32 w-40 rounded overflow-hidden  bg-[#def4fa] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-primary duration-300" 
       >
         <img
           alt="e-commerce "
