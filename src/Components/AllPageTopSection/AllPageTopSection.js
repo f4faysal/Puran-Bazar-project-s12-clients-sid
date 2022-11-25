@@ -4,11 +4,11 @@ const AllPageTopSection = ({matchPhonot , heding , serchTogol}) => {
     const [showSerchbar , setShowSerchBar] = useState(true)
     
   return (
-    <div className="hero ">
+    <div className="hero">
       <div className="hero-content flex-col lg:flex-row-reverse justify-center w-full ">
-        <img src={matchPhonot} className="max-w-sm  " alt="" />
+        <img src={matchPhonot} className="w-8/12 lg:w-1/3" alt="" />
         <div className="w-1/2">
-          <h1 className="text-5xl font-bold">
+          <h1 className=" text-2xl lg:text-5xl font-bold">
            {heding}
           </h1>
         { showSerchbar ? <div className="form-control mt-8">
