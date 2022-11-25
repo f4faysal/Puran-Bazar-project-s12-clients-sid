@@ -2,7 +2,7 @@ import { StarIcon } from '@heroicons/react/24/solid'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const HomeCard = () => {
+const CategorieCard = () => {
   return (
     <div className='lg:w-1/3 md:w-1/2 p-4 w-full'>
       <Link
@@ -35,4 +35,4 @@ const HomeCard = () => {
   )
 }
 
-export default HomeCard
+export default CategorieCard

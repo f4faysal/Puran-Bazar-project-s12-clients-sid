@@ -1,7 +1,8 @@
+import { StarIcon } from '@heroicons/react/24/solid'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { StarIcon } from '@heroicons/react/24/solid'
-const ExpCard = () => {
+
+const ExpCard = ({categorie}) => {
   return (
     <div className='lg:w-1/4 md:w-1/2 p-4 w-full'>
       <Link
