@@ -17,9 +17,11 @@ const Offers = () => {
               go, download our app.
             </p>
             <div className="flex gap-7 w-1/3">
+              
               <img className="w-3/4" src={FIFA} alt="" />
               <img className="w-3/4" src={thumbnail} alt="" />
               <img className="w-3/4" src={FIFA} alt="" />
+
               {/* <div className="h-full w-full">
                 <div className="flex justify-end items-end ">
                   <div className="">
