@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-// import PrimaryButton from "../../Components/Button/PrimaryButton";
-import { AuthContext } from "../../contexts/AuthProvider";
-// import SmallSpinner from "../../Components/Spinner/SmallSpinner";
 import toast from "react-hot-toast";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { setAuthToken } from "../../api/auth";
 import PrimaryButton from "../../Components/Button/PrimaryButton";
 import SmallSpinner from "../../Components/Spinner/SmallSpinner";
-// import {setAuthToken} from '../../api/auth'
+import { AuthContext } from "../../contexts/AuthProvider";
+
 
 
 const Login = () => {
@@ -16,16 +15,16 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+
   const handelSubmit = (event) => {
     event.preventDefault();
-
     const email = event.target.email.value;
     const password = event.target.password.value;
+
     signin(email, password)
       .then((res) => {
         toast.success("Logine Success..");
-        // setAuthToken(res.user)
-        
+        setAuthToken(res.user)
         navigate(from, { replace: true });
       })
       .catch((err) => {
@@ -37,7 +36,7 @@ const Login = () => {
 
   const handelSignInWithGoogle = () => {
     signInWithGoogle().then((result) => {
-      // setAuthToken(result.user)
+      setAuthToken(result.user)
       navigate(from, { replace: true });
 
       console.log("Google user :>> ", result);

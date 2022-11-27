@@ -2,8 +2,8 @@ import { StarIcon } from "@heroicons/react/24/solid";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ExpCard = ({ categorie, det }) => {
-  const { logo, _id, slug , title } = categorie;
+const ExpCard = ({ categorie, det  }) => {
+  const { logo, _id, slug, title } = categorie;
   
   return (
     <div className="lg:w-1/4 md:w-1/2 p-4 w-full flex justify-center items-center flex-col">
@@ -20,11 +20,9 @@ const ExpCard = ({ categorie, det }) => {
 
       {det ? (
         <div className="mt-4">
-          <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
-           
-          </h3>
+          {/* <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1"> </h3> */}
           <h2 className="text-gray-900 title-font text-lg font-medium">
-          {title}
+            {title}
           </h2>
           <p className="mt-1">total 99</p>
           <div className="flex mt-1">
@@ -32,7 +30,7 @@ const ExpCard = ({ categorie, det }) => {
             <StarIcon className="h3 w-3 text-green-500" />
             <StarIcon className="h3 w-3 text-green-500" />
             <StarIcon className="h3 w-3 text-green-500" />
-            <StarIcon className="h3 w-3 text-green-500" /> 
+            <StarIcon className="h3 w-3 text-green-500" />
           </div>
         </div>
       ) : (

@@ -4,20 +4,17 @@ import smartphone from "../../../../assets/smartphone.png";
 import AllPageTopSection from "../../../../Components/AllPageTopSection/AllPageTopSection";
 import ExpCard from "../../../../Components/Card/ExpCard";
 const CategoriesAll = () => {
-  const { data: categories = [] } = useQuery({
+  const { data: categories = [] , refetch } = useQuery({
     queryKey: ["categories"],
     queryFn: async () => {
       try {
         const url = "http://localhost:5000/categories";
         // try cghat function handel to error
-        const res = await fetch(
-          url
-          // ,         {
-          //       headers: {
-          //         // authorization: `bearer ${localStorage.getItem("accessToken")}`,
-          //       },
-          //     }
-        );
+        const res = await fetch(url, {
+          headers: {
+            authorization: `bearer ${localStorage.getItem("access-token")}`,
+          },
+        });
         const data = await res.json();
         console.log(data);
         return data;
@@ -45,7 +42,7 @@ const CategoriesAll = () => {
         <div className="hero-content lg:flex-col">
           <div className="hero-content flex-col lg:flex-row-reverse ">
             {categories.map((categorie, i) => (
-              <ExpCard key={i} categorie={categorie}></ExpCard>
+              <ExpCard key={i} categorie={categorie} refetch={refetch}></ExpCard>
             ))}
           </div>
         </div>

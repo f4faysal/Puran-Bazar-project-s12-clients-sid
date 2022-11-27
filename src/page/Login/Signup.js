@@ -1,12 +1,19 @@
-import React, { useContext } from "react";
-import toast from "react-hot-toast";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { setAuthToken } from "../../api/auth";
 import PrimaryButton from "../../Components/Button/PrimaryButton";
+import SmallSpinner from "../../Components/Spinner/SmallSpinner";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Signup = () => {
-  const { createUser, updateUserProfile, verifyEmail, signInWithGoogle } =
-    useContext(AuthContext);
+  const [accuntType, setAccountType] = useState("user");
+  const {
+    createUser,
+    updateUserProfile,
+    verifyEmail,
+    signInWithGoogle,
+    loading,
+  } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -18,13 +25,14 @@ const Signup = () => {
     const image = event.target.image.files[0];
     const email = event.target.email.value;
     const password = event.target.password.value;
+    const accountType = accuntType;
 
-    console.log(name, image, email, password);
+    console.log("zx ---->", name, email, password, accountType);
 
     const formData = new FormData();
     formData.append("image", image);
 
-    //b44cfcd23ef7fd73c5884fdb49060a89
+    // b44cfcd23ef7fd73c5884fdb49060a89
     const url =
       "https://api.imgbb.com/1/upload?key=b44cfcd23ef7fd73c5884fdb49060a89";
     fetch(url, { method: "POST", body: formData })
@@ -35,14 +43,16 @@ const Signup = () => {
         createUser(email, password)
           .then((result) => {
             //updateUserProfile
-            updateUserProfile(name, imgUrl)
+            updateUserProfile(name, imgUrl);
+            setAuthToken(result.user , accountType );
+            navigate(from, { replace: true })
               //verifyEmail
-              .then(
-                verifyEmail().then(() => {
-                  toast.success("Place chack your Email to verify Code");
-                  navigate(from, { replace: true });
-                })
-              )
+              .then
+              // verifyEmail().then(() => {
+              //   toast.success("Place chack your Email to verify Code");
+              //   navigate(from, { replace: true });
+              // })
+              ()
               .catch((err) => console.log("err :>> ", err));
             console.log(" result :>> ", result);
           })
@@ -53,25 +63,53 @@ const Signup = () => {
 
   const handelSignInWithGoogle = () => {
     signInWithGoogle().then((result) => {
+      setAuthToken(result.user);
       navigate(from, { replace: true });
       console.log("Google user :>> ", result);
     });
   };
 
   return (
-    <div className="flex justify-center items-center pt-8">
-      <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
-        <div className="mb-8 text-center">
-          <h1 className="my-3 text-4xl font-bold">Signup</h1>
+    <div className="flex justify-center items-end pt-0 gap-5">
+      <div className="flex flex-col max-w-md px-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
+        <div className="mb-1 text-center">
+          <h1 className="my-1 text-4xl font-bold">Signup</h1>
           <p className="text-sm text-gray-400">Create a new account</p>
         </div>
         <form
           onSubmit={handelSubmit}
           noValidate=""
           action=""
-          className="space-y-12 ng-untouched ng-pristine ng-valid"
+          className="space-y-5 ng-untouched ng-pristine ng-valid"
         >
-          <div className="space-y-4">
+          <div className="space-y-1">
+            <div>
+              <div className="w-full px-4 py-5">
+                <fieldset>
+                  <legend className="block mb-1 text-sm">
+                    Creates a seller account
+                  </legend>
+                  <input
+                    onChange={(event) => setAccountType(event.target.value)}
+                    id="draft"
+                    className="peer/draft w-4 h-4 mt-2"
+                    type="radio"
+                    value="seller"
+                    name="seller"
+                  />
+                  <label
+                    for="draft"
+                    className="peer-checked/draft:text-secondary text-xl pl-2"
+                  >
+                    seller account
+                  </label>
+
+                  <div className="hidden peer-checked/draft:block">
+                    Seller account selacted
+                  </div>
+                </fieldset>
+              </div>
+            </div>
             <div>
               <label htmlFor="email" className="block mb-2 text-sm">
                 Name
@@ -80,7 +118,7 @@ const Signup = () => {
                 type="text"
                 name="name"
                 id="name"
-                // required
+                required
                 placeholder="Enter Your Name Here"
                 className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-green-500 bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
@@ -95,7 +133,7 @@ const Signup = () => {
                 id="image"
                 name="image"
                 accept="image/*"
-                // required
+                required
               />
             </div>
             <div>
@@ -103,7 +141,7 @@ const Signup = () => {
                 Email address
               </label>
               <input
-                // required
+                required
                 type="email"
                 name="email"
                 id="email"
@@ -128,13 +166,13 @@ const Signup = () => {
               />
             </div>
           </div>
-          <div className="space-y-2">
+          <div className=" mt-0">
             <div>
               <PrimaryButton
                 type="submit"
                 classes="w-full px-8 py-3 font-semibold rounded-md bg-gray-900 hover:bg-gray-700 hover:text-white text-gray-100"
               >
-                Sign up
+                {loading ? <SmallSpinner></SmallSpinner> : "Sign up"}
               </PrimaryButton>
             </div>
           </div>
@@ -186,6 +224,9 @@ const Signup = () => {
           </Link>
           .
         </p>
+      </div>
+      <div>
+        <img src="https://swap.com.bd/_nuxt/img/login-img.01f82b2.png" alt="" />
       </div>
     </div>
   );

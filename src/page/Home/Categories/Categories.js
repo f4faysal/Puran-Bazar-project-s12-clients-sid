@@ -12,14 +12,11 @@ const Categories = () => {
       try {
         const url = "http://localhost:5000/categories";
         // try cghat function handel to error
-        const res = await fetch(
-          url
-          // ,         {
-          //       headers: {
-          //         // authorization: `bearer ${localStorage.getItem("accessToken")}`,
-          //       },
-          //     }
-        );
+        const res = await fetch(url, {
+          headers: {
+            authorization: `bearer ${localStorage.getItem("access-token")}`,
+          },
+        });
         const data = await res.json();
         console.log(data);
         return data;
@@ -36,14 +33,28 @@ const Categories = () => {
             Categories to Sell
           </h1>
           <Link
-            to="/categoriesAll"
-            className="text-sm btn btn-primary lg:text-xl font-semibold  text-white mt-2"
+            to="/categories"
+            className="text-[5px] btn btn-sm btn-secondary lg:text-xl font-semibold  text-white mt-2"
           >
             View all
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              />
+            </svg>
           </Link>
         </div>
         <div className="hero-content flex-col lg:flex-row-reverse ">
-          {categories.map((categorie, i) => (
+          {categories?.map((categorie, i) => (
             <ExpCard key={i} categorie={categorie}></ExpCard>
           ))}
         </div>

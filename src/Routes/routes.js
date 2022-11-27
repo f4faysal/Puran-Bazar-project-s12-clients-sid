@@ -17,14 +17,18 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/categoriesAll",
+        path: "/categories",
         element: <CategoriesAll />,
       },
 
       {
         path: "/categoriseItem/:slug",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/categories/${params.slug}`),
+          fetch(`http://localhost:5000/categories/${params.slug}`, {
+            headers: {
+              authorization: `bearer ${localStorage.getItem("access-token")}`,
+            },
+          }),
         element: <CategoriseItem />,
       },
       {
