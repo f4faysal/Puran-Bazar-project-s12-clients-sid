@@ -25,6 +25,9 @@ const Categories = () => {
       }
     },
   });
+
+
+
   return (
     <div className="hero bg-primary mb-10">
       <div className="lg:hero-content lg:flex-col">

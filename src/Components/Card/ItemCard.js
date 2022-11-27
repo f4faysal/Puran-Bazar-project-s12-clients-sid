@@ -1,6 +1,6 @@
 import React from "react";
 
-const ItemCard = ({ products }) => {
+const ItemCard = ({ products , srtSookingItem}) => {
   const {
     short_description,
     title,
@@ -12,9 +12,10 @@ const ItemCard = ({ products }) => {
     condition_type,
   } = products;
 
-  console.log(status, products);
+  console.log(status[0]);
   return (
-    <div className="card w-52   bg-base-100 shadow-xl">
+    <div className="card w-52   bg-base-100 shadow-xl indicator ">
+      <span className="indicator-item badge badge-secondary">{status[0]}</span>
       <div className="w-full h-full">
         <figure className="px-3 pt-2">
           <img src={featured_image} alt="Shoes" className="rounded-xl" />
@@ -37,11 +38,16 @@ const ItemCard = ({ products }) => {
           <p className="mb-2 text-sm">Quality : {condition_type}</p>
 
           <div className="card-actions justify-end ">
-            <button className="btn btn-sm btn-primary text-white">
+            <label onClick={()=>srtSookingItem(products)} htmlFor="booking-modal" className="btn btn-sm btn-primary text-white">
               Buy Now
-            </button>
+            </label>
+    
           </div>
         </div>
+      </div>
+
+      <div>
+      
       </div>
     </div>
   );

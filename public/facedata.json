@@ -14,7 +14,7 @@
     "slug": "apple-iphone-xs-max",
     "title": "xiaomi",
     "condition_type": "excellent",
-    "status ": ["available", "sold"]
+    "status": ["available", "sold"]
   },
   {
     "deleted_at": null,
@@ -31,7 +31,7 @@
     "slug": "apple-iphone-xs-max",
     "title": "Apple iPhone XS Max",
     "condition_type": "excellent",
-    "status ": ["available", "sold"]
+    "status": ["available", "sold"]
   },
   {
     "deleted_at": null,
@@ -48,7 +48,7 @@
     "slug": "apple-iphone-xs-max",
     "title": "google ilex 4xl",
     "condition_type": "excellent",
-    "status ": ["available", "sold"]
+    "status": ["available", "sold"]
   },
   {
     "deleted_at": null,
@@ -65,7 +65,7 @@
     "slug": "apple-iphone-xs-max",
     "title": "Apple iPhone 12 pro Max",
     "condition_type": "excellent",
-    "status ": ["available", "sold"]
+    "status": ["available", "sold"]
   },
   {
     "deleted_at": null,
@@ -82,7 +82,7 @@
     "slug": "apple-iphone-xs-max",
     "title": "google pixcle 7 pro ",
     "condition_type": "excellent",
-    "status ": ["available", "sold"]
+    "status": ["available", "sold"]
   },
   {
     "deleted_at": null,
@@ -99,7 +99,7 @@
     "slug": "apple-iphone-xs-max",
     "title": "xiaomi mi 12 ",
     "condition_type": "excellent",
-    "status ": ["available", "sold"]
+    "status": ["available", "sold"]
   },
   {
     "deleted_at": null,
@@ -114,10 +114,9 @@
     "show_range_price": "0",
     "year_of_purchase": "6",
     "slug": "apple-iphone-xs-max",
-
     "title": "samsung flod z 3",
     "condition_type": "excellent",
-    "status ": ["available", "sold"]
+    "status": ["available", "sold"]
   },
   {
     "deleted_at": null,
@@ -134,7 +133,7 @@
     "slug": "apple-iphone-xs-max",
     "title": "samsung s21 ulta",
     "condition_type": "excellent",
-    "status ": ["available", "sold"]
+    "status": ["available", "sold"]
   },
   {
     "deleted_at": null,
@@ -151,7 +150,7 @@
     "slug": "apple-iphone-xs-max",
     "title": "Apple iPhone 14 pro Max",
     "condition_type": "excellent",
-    "status ": ["available", "sold"]
+    "status": ["available", "sold"]
   },
 
   [
