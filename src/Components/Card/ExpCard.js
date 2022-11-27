@@ -8,7 +8,7 @@ const ExpCard = ({ categorie, det  }) => {
   return (
     <div className="lg:w-1/4 md:w-1/2 p-4 w-full flex justify-center items-center flex-col">
       <Link
-        to={`/categoriseItem/${slug}`}
+        to={`/categories/${slug}`}
         className="block relative h-32 w-40 rounded overflow-hidden  bg-[#def4fa] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-white duration-300"
       >
         <img

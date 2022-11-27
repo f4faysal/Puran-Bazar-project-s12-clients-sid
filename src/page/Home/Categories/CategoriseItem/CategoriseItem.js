@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import smartphone from "../../../../assets/smartphone.png";
 import AllPageTopSection from "../../../../Components/AllPageTopSection/AllPageTopSection";
@@ -8,9 +9,41 @@ import ItemCard from "../../../../Components/Card/ItemCard";
 const CategoriseItem = () => {
   const [extaDetles, srtExtaDetles] = useState(true);
   const categoris = useLoaderData();
-  console.log(categoris);
 
-   
+  console.log(categoris.slug);
+
+
+
+  useEffect(()=>{
+    
+  },[])
+
+  const { data: products = [] } = useQuery({
+    queryKey: ["products"],
+    queryFn: async () => {
+      try {
+        const url = `http://localhost:5000/products/${categoris.slug}`;
+        // try cghat function handel to error
+        const res = await fetch(url 
+        //   {
+        //   headers: {
+        //     authorization: `bearer ${localStorage.getItem("access-token")}`,
+        //   },
+        // }
+        );
+        const data = await res.json();
+        console.log("hello", data);
+        return data;
+      } catch (error) {
+        console.log("errorerror", error);
+      }
+    },
+  });
+
+  // const [produc , setproducts] = useState(products)
+
+  console.log( "allprodact" , products)
+
   return (
     <div>
       <AllPageTopSection
@@ -24,16 +57,16 @@ const CategoriseItem = () => {
         serchTogol={true}
       ></AllPageTopSection>
       <div className="w-full flex justify-center items-center">
-        <ExpCard categorie={categoris} det={extaDetles}>
-          {" "}
-        </ExpCard>
+        <ExpCard categorie={categoris} det={extaDetles}></ExpCard>
+      </div>
+      <div className="text-2xl text-secondary  ">
+        <h1 className="text-center border  ">Pick Model</h1>
       </div>
       <div>
-        <div><h1>Pick Model</h1></div>
-        <div className="grid grid-cols-5  items-center gap-4 justify-center justify-items-center">
-        {
-         [...Array(60)].map( item => <ItemCard></ItemCard> )
-        }
+        <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-5  items-center gap-4 justify-center justify-items-center">
+          {products?.map((item) => (
+            <ItemCard key={item._id} products={item}></ItemCard>
+          ))}
         </div>
       </div>
     </div>

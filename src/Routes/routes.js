@@ -25,9 +25,9 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/categoriseItem/:slug",
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/categories/${params.slug}`, {
+        path: "/categories/:slug",
+        loader: async ({ params }) =>
+         await fetch(`http://localhost:5000/categories/${params.slug}`, {
             headers: {
               authorization: `bearer ${localStorage.getItem("access-token")}`,
             },
