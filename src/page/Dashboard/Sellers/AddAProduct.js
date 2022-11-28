@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import Spinner from "../../../Components/Spinner/Spinner";
 
 const AddAProduct = () => {
-    
   const condition = [{ type: "excellent" }, { type: "good" }, { type: "fair" }];
 
   const {
@@ -19,7 +18,11 @@ const AddAProduct = () => {
 
   const navigate = useNavigate();
 
-  const { data: categories = [] , refetch , isLoading} = useQuery({
+  const {
+    data: categories = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["categories"],
     queryFn: async () => {
       try {
@@ -39,6 +42,20 @@ const AddAProduct = () => {
     },
   });
 
+  // const damo = (data) => {
+  //   const addProduct = {
+  //     title: data.name,
+  //     product_category_id: data.category,
+  //     number: data.number,
+  //     short_description: data.description,
+  //     condition_type: data.condition,
+  //     year_of_purchase: data.purchase,
+  //     sell_price: data.price,
+  //     location: data.location,
+  //   };
+  //   console.log("faysal", addProduct);
+  // };
+
   const handleAddDoctor = (data) => {
     const image = data.image[0];
     const formData = new FormData();
@@ -53,39 +70,39 @@ const AddAProduct = () => {
         if (imgData.success) {
           console.log(imgData.data.url);
           const addProduct = {
-            title : data.name,
-            product_category_id : data.category,
-            number : data.number,
+            title: data.name,
+            product_category_id: data.category,
+            number: data.number,
             short_description: data.description,
             condition_type: data.condition,
             year_of_purchase: data.purchase,
             sell_price: data.price,
-            location : data.location,
+            location: data.location,
             featured_image: imgData.data.url,
           };
           console.log(addProduct);
-          
-        //   save products information to the database
-          fetch('http://localhost:5000/products', {
-              method: 'POST',
-              headers: {
-                  'content-type': 'application/json',
-                  authorization: `bearer ${localStorage.getItem('access-token')}`
-              },
-              body: JSON.stringify(addProduct)
+
+          //   save products information to the database
+          fetch("http://localhost:5000/products", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              authorization: `bearer ${localStorage.getItem("access-token")}`,
+            },
+            body: JSON.stringify(addProduct),
           })
-              .then(res => res.json())
-              .then(result => {
-                  console.log(result);
-                  toast.success(`${data.name} is added successfully`);
-                  
-              })
+            .then((res) => res.json())
+            .then((result) => {
+              console.log(result);
+              toast.success(`${data.name} is added successfully`);
+              navigate("/dashboard/my-product");
+            });
         }
       });
   };
 
   if (isLoading) {
-      return <Spinner></Spinner>
+    return <Spinner></Spinner>;
   }
 
   return (
@@ -123,7 +140,6 @@ const AddAProduct = () => {
             ))}
           </select>
         </div>
-
 
         {/* <div className="form-control w-full max-w-xs">
           <label className="label">
@@ -275,12 +291,34 @@ const AddAProduct = () => {
           {errors.img && <p className="text-red-500">{errors.img.message}</p>}
         </div>
 
-        <input
-          className="btn btn-accent w-full mt-4"
-          value="Add Doctor"
-          type="submit"
-        />
+        <label className="btn btn-secondary w-full mt-4" htmlFor="my-modal">
+          {" "}
+          Add Prodact{" "}
+        </label>
+        <input type="checkbox" id="my-modal" className="modal-toggle" />
+
+        <div className="modal">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">
+              Congratulations random Internet user!
+            </h3>
+            <p className="py-4"></p>
+            <div className="modal-action">
+              <input type="submit" value="Confrum" htmlFor="" className="btn" />
+              <label htmlFor="my-modal" className="btn">
+                {" "}
+                X{" "}
+              </label>
+            </div>
+          </div>
+        </div>
       </form>
+
+      <div>
+        {/* The button to open modal */}
+
+        {/* Put this part before </body> tag */}
+      </div>
     </div>
   );
 };
