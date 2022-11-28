@@ -14,10 +14,9 @@ const ItemModal = ({ bookingItem, refetch, srtBookingItem }) => {
     title,
     featured_image,
     product_category_id,
-    price,
-    status,
     sell_price,
     year_of_purchase,
+    _id,
     condition_type,
   } = bookingItem;
 
@@ -36,12 +35,15 @@ const ItemModal = ({ bookingItem, refetch, srtBookingItem }) => {
       bookingDate: date,
       description: short_description,
       title: title,
+      podact: _id,
       userNAme: name,
       category: product_category_id,
       email,
       phone,
       meeting_location,
       sell_price,
+      featured_image,
+      condition_type,
     };
     console.log(booking, bookingItem);
 

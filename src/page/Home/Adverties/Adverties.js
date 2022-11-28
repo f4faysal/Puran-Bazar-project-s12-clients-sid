@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useState } from "react";
 import ItemCard from "../../../Components/Card/ItemCard";
-import SmallSpinner from "../../../Components/Spinner/SmallSpinner";
+import Spinner from "../../../Components/Spinner/Spinner";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import ItemModal from "../Categories/CategoriseItem/ItemModal";
 
@@ -19,14 +19,11 @@ const Adverties = () => {
       try {
         const url = `http://localhost:5000/advatices/${user.email}`;
         // try cghat function handel to error
-        const res = await fetch(
-          url
-          //     {
-          //   headers: {
-          //     authorization: `bearer ${localStorage.getItem("access-token")}`,
-          //   },
-          // }
-        );
+        const res = await fetch(url, {
+          headers: {
+            authorization: `bearer ${localStorage.getItem("access-token")}`,
+          },
+        });
         const data = await res.json();
         console.log("Adverties", data);
         return data;
@@ -36,8 +33,8 @@ const Adverties = () => {
     },
   });
 
-  if(isLoading){
-    return <SmallSpinner></SmallSpinner>
+  if (isLoading) {
+    return <Spinner></Spinner>;
   }
 
   console.log("data", advatices);
@@ -45,7 +42,7 @@ const Adverties = () => {
     <div className="mb-5 mt-5">
       <div className="hero  rounded p-5">
         <div className="hero-content flex-col lg:flex-row-reverse lg:gap-20 ">
-          { user ? <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-5  items-center gap-4 justify-center justify-items-center">
+          <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-5  items-center gap-4 justify-center justify-items-center">
             {advatices?.map((item) => (
               <ItemCard
                 key={item._id}
@@ -53,16 +50,15 @@ const Adverties = () => {
                 srtSookingItem={srtBookingItem}
               ></ItemCard>
             ))}
-          
-          </div> :<SmallSpinner></SmallSpinner> }
+          </div>
 
           {bookingItem && (
-        <ItemModal
-          bookingItem={bookingItem}
-          refetch={refetch}
-          srtBookingItem={srtBookingItem}
-        ></ItemModal>
-      )}
+            <ItemModal
+              bookingItem={bookingItem}
+              refetch={refetch}
+              srtBookingItem={srtBookingItem}
+            ></ItemModal>
+          )}
         </div>
       </div>
     </div>

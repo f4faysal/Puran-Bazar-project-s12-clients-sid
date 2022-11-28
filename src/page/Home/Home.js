@@ -5,6 +5,7 @@ import Categories from "./Categories/Categories";
 import Offers from "./Offers/Offers";
 
 const Home = () => {
+ 
   return (
     <div>
       <Banner></Banner>

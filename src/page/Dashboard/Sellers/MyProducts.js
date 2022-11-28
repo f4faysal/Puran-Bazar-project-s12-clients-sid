@@ -35,7 +35,8 @@ const MyProducts = () => {
       } catch (error) {}
     },
   });
-  console.log(products);
+  
+  // console.log(products);
 
   //prodact delete
   const handleDeleteDoctor = (prodact) => {
