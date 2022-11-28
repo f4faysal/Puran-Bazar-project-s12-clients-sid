@@ -35,6 +35,7 @@ const Signup = () => {
     // b44cfcd23ef7fd73c5884fdb49060a89
     const url =
       "https://api.imgbb.com/1/upload?key=b44cfcd23ef7fd73c5884fdb49060a89";
+
     fetch(url, { method: "POST", body: formData })
       .then((res) => res.json())
       .then((imgUrls) => {
@@ -44,16 +45,8 @@ const Signup = () => {
           .then((result) => {
             //updateUserProfile
             updateUserProfile(name, imgUrl);
-            setAuthToken(result.user , accountType );
-            navigate(from, { replace: true })
-              //verifyEmail
-              .then
-              // verifyEmail().then(() => {
-              //   toast.success("Place chack your Email to verify Code");
-              //   navigate(from, { replace: true });
-              // })
-              ()
-              .catch((err) => console.log("err :>> ", err));
+            setAuthToken(result.user, accountType);
+            navigate(from, { replace: true });
             console.log(" result :>> ", result);
           })
           .catch((err) => console.log("err :>> ", err));

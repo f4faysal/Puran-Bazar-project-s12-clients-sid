@@ -34,8 +34,8 @@ const ItemModal = ({ bookingItem, refetch, srtBookingItem }) => {
 
     const booking = {
       bookingDate: date,
-      description: title,
-      categories: short_description,
+      description: short_description,
+      title: title,
       userNAme: name,
       category: product_category_id,
       email,
@@ -54,9 +54,9 @@ const ItemModal = ({ bookingItem, refetch, srtBookingItem }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("D==>", data);
+        // console.log("D==>", data);
         if (data.acknowledged) {
-            srtBookingItem(null);
+          srtBookingItem(null);
           toast.success("Booking confirmed");
           refetch();
         } else {
@@ -80,7 +80,7 @@ const ItemModal = ({ bookingItem, refetch, srtBookingItem }) => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">{short_description}</h3>
+          <h3 className="text-lg font-bold">{title}</h3>
           <h3 className="text-sm font-bold"> Use {year_of_purchase} Mont</h3>
           <form
             onSubmit={handleBooking}

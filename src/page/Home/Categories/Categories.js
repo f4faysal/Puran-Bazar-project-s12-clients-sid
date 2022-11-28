@@ -26,8 +26,7 @@ const Categories = () => {
     },
   });
 
-
-
+  console.log(user, "user");
   return (
     <div className="hero bg-primary mb-10">
       <div className="lg:hero-content lg:flex-col">
@@ -56,6 +55,7 @@ const Categories = () => {
             </svg>
           </Link>
         </div>
+
         <div className="hero-content flex-col lg:flex-row-reverse ">
           {categories?.map((categorie, i) => (
             <ExpCard key={i} categorie={categorie}></ExpCard>

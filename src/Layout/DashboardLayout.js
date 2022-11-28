@@ -13,25 +13,33 @@ const DashboardLayout = () => {
       {/* <!-- Navbar menu content here --> */}
       <li>
         {/* Shudhu user dekhbe */}
-        <Link to={'/dashboard/my-orders'}> My orders</Link>
+        <Link to={"/dashboard/my-orders"}> My orders</Link>
       </li>
 
       {true && (
         <>
-          <li>
-            {/* Shudhu sellar dekhbe */}
-            <Link>Add A Product</Link>
-          </li>
-          <li>
-            <Link>My Products</Link>
-          </li>
+          {true && (
+            <>
+              <li>
+                {/* Shudhu sellar dekhbe */}
+                <Link to={"/dashboard/add-a-product"}>Add A Product</Link>
+              </li>
+              <li>
+                <Link to={"/dashboard/add-a-product/my-product"}>My Products</Link>
+              </li>
+            </>
+          )}
           {/* -----------------addmin view------------------ */}
-          <li>
-            <Link>All Buyers</Link>
-          </li>
-          <li>
-            <Link>All Sellers</Link>
-          </li>
+          {false && (
+            <>
+              <li>
+                <Link>All Buyers</Link>
+              </li>
+              <li>
+                <Link>All Sellers</Link>
+              </li>
+            </>
+          )}
         </>
       )}
     </>
