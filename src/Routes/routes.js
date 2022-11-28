@@ -2,6 +2,8 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
+import Page404 from "../page/404/Page404";
+import Blog from "../page/Blog/Blog";
 import MyOrders from "../page/Dashboard/Buyers/MyOrders";
 import AddAProduct from "../page/Dashboard/Sellers/AddAProduct";
 import MyProducts from "../page/Dashboard/Sellers/MyProducts";
@@ -29,7 +31,7 @@ const router = createBrowserRouter([
       {
         path: "/categories/:slug",
         loader: async ({ params }) =>
-         await fetch(`http://localhost:5000/categories/${params.slug}`, {
+          await fetch(`http://localhost:5000/categories/${params.slug}`, {
             headers: {
               authorization: `bearer ${localStorage.getItem("access-token")}`,
             },
@@ -43,6 +45,14 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup />,
+      },
+      {
+        path: "*",
+        element: <Page404></Page404>
+      },
+      {
+        path: "/bglog",
+        element: <Blog></Blog>
       },
     ],
   },

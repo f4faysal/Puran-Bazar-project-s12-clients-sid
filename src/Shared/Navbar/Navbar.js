@@ -16,6 +16,9 @@ const Navbar = () => {
       <li>
         <Link to={"/categories"}>Categories</Link>
       </li>
+      <li>
+        <Link to={"/bglog"}>Bglog</Link>
+      </li>
       {user?.uid ? (
         <>
           <li>
