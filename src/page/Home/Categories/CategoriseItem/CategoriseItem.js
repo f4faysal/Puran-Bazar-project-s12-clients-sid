@@ -70,16 +70,16 @@ const CategoriseItem = () => {
         </div>
       )}
       <div className=" text-secondary w-full mb-10 border flex justify-center gap-3 lg:flex-row  flex-col">
-        <h1 className=" text-2xl border text-center">Pick Model</h1>
+        <h1 className=" text-2xl text-center">Pick Model</h1>
         {user ? (
           <p className="text-sm text-center">
             <span className="text-indigo-800 font-semibold border-double ">{user.email}</span>{" "}
             Welcome to Puran Bazar
           </p>
         ) : (
-          <Link to={"/login"} className="btn btn-sm">
+          <Link to={"/login"} className="btn btn-sm btn-secondary text-white">
             {" "}
-            Plz Sign in
+            Please log in
           </Link>
         )}
       </div>

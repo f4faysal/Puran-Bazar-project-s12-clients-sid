@@ -36,7 +36,7 @@ const Categories = () => {
           </h1>
           <Link
             to="/categories"
-            className="text-[5px] btn btn-sm btn-secondary lg:text-xl font-semibold  text-white mt-2"
+            className="text-sm btn btn-sm btn-secondary lg:text-sm font-semibold  text-white mt-2"
           >
             View all
             <svg

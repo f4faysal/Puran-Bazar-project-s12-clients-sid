@@ -27,7 +27,7 @@ const Signup = () => {
     const password = event.target.password.value;
     const accountType = accuntType;
 
-    console.log("zx ---->", name, email, password, accountType);
+    // console.log("zx ---->", name, email, password, accountType);
 
     const formData = new FormData();
     formData.append("image", image);
@@ -56,7 +56,7 @@ const Signup = () => {
 
   const handelSignInWithGoogle = () => {
     signInWithGoogle().then((result) => {
-      setAuthToken(result.user);
+      setAuthToken(result.user , accuntType);
       navigate(from, { replace: true });
       console.log("Google user :>> ", result);
     });

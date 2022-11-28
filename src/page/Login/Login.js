@@ -9,6 +9,8 @@ import { AuthContext } from "../../contexts/AuthProvider";
 
 
 const Login = () => {
+  const [accuntType, setAccountType] = useState("user");
+
   const { signInWithGoogle, signin, resetPassword, loading, setLoading } =
     useContext(AuthContext);
 
@@ -36,7 +38,7 @@ const Login = () => {
 
   const handelSignInWithGoogle = () => {
     signInWithGoogle().then((result) => {
-      setAuthToken(result.user)
+      setAuthToken(result.user , accuntType)
       navigate(from, { replace: true });
 
       console.log("Google user :>> ", result);
