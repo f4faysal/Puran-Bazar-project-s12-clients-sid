@@ -61,7 +61,7 @@ const AddAProduct = () => {
   //   console.log("faysal", addProduct);
   // };
 
-  const handleAddDoctor = (data) => {
+  const handleAddProdactImg = (data) => {
     const image = data.image[0];
     const formData = new FormData();
     formData.append("image", image);
@@ -116,7 +116,7 @@ const AddAProduct = () => {
   return (
     <div className="w-96 p-7 ">
       <h2 className="text-4xl">Add A Product</h2>
-      <form onSubmit={handleSubmit(handleAddDoctor)} className="">
+      <form onSubmit={handleSubmit(handleAddProdactImg)} className="">
         <div className="form-control w-full max-w-xs">
           <label className="label">
             {" "}

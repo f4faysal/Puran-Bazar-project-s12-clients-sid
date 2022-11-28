@@ -39,7 +39,7 @@ const MyProducts = () => {
   // console.log(products);
 
   //prodact delete
-  const handleDeleteDoctor = (prodact) => {
+  const handleDeletePodact = (prodact) => {
     fetch(`http://localhost:5000/product/${prodact._id}`, {
       method: "DELETE",
       headers: {
@@ -50,7 +50,7 @@ const MyProducts = () => {
       .then((data) => {
         if (data.deletedCount > 0) {
           refetch();
-          toast.success(`Doctor ${prodact.title} deleted successfully`);
+          toast.success(`Prodact ${prodact.title} deleted successfully`);
         }
       });
     console.log("delete ", prodact);
@@ -79,7 +79,7 @@ const MyProducts = () => {
 
   return (
     <div>
-      <h2 className="text-3xl">Manage Doctors:</h2>
+      <h2 className="text-3xl">Manage Advatice:</h2>
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>
@@ -135,7 +135,7 @@ const MyProducts = () => {
         <ConfirmationModal
           title={`Are you sure you want to delete?`}
           message={`If you delete ${deletingProdact.title}. It cannot be undone.`}
-          successAction={handleDeleteDoctor}
+          successAction={handleDeletePodact}
           successButtonName="Delete"
           modalData={deletingProdact}
           closeModal={closeModal}

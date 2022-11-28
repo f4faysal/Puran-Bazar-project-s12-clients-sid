@@ -5,7 +5,7 @@ module.exports = {
   daisyui: {
     themes: [
       {
-        doctorPotal: {
+        puranbazar: {
           primary: "#60cae4",
 
           secondary: "#325eac",
