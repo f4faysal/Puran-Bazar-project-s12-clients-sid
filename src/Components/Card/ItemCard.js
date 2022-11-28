@@ -16,7 +16,7 @@ const ItemCard = ({ products , srtSookingItem}) => {
 
   return (
     <div className="card w-52   bg-base-100 shadow-xl indicator ">
-      <span className="indicator-item badge badge-secondary">{status ? status[0] : "New"}</span>
+      <span className="indicator-item badge badge-secondary">{status ? status : "New"}</span>
       <div className="w-full h-full">
         <figure className="px-3 pt-2 w-46 h-36">
           <img src={featured_image} alt="Shoes" className="rounded  h-full " />

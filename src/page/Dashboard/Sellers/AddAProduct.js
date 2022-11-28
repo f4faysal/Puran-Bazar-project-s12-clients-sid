@@ -1,12 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../../../Components/Spinner/Spinner";
+import { AuthContext } from "../../../contexts/AuthProvider";
 
 const AddAProduct = () => {
+  // const {user} = useContext(AuthProvider)
+  const { user } = useContext(AuthContext);
   const condition = [{ type: "excellent" }, { type: "good" }, { type: "fair" }];
+
+  console.log(user.email);
 
   const {
     register,
@@ -79,6 +84,9 @@ const AddAProduct = () => {
             sell_price: data.price,
             location: data.location,
             featured_image: imgData.data.url,
+            seller :user.email,
+            status : "unsold"
+
           };
           console.log(addProduct);
 
@@ -300,14 +308,14 @@ const AddAProduct = () => {
         <div className="modal">
           <div className="modal-box">
             <h3 className="font-bold text-lg">
-              Congratulations random Internet user!
+              Add A Product Final Confirmation
             </h3>
             <p className="py-4"></p>
             <div className="modal-action">
-              <input type="submit" value="Confrum" htmlFor="" className="btn" />
+              <input type="submit" value="Confirm" htmlFor="" className="btn" />
               <label htmlFor="my-modal" className="btn">
                 {" "}
-                X{" "}
+                Cancel{" "}
               </label>
             </div>
           </div>
