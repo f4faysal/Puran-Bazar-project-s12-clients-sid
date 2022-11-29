@@ -53,11 +53,11 @@ const MyProducts = () => {
           toast.success(`Prodact ${prodact.title} deleted successfully`);
         }
       });
-    console.log("delete ", prodact);
+    // console.log("delete ", prodact);
   };
 
   const advertiesHandel = (prodact) => {
-    console.log("advertiesHandel", prodact);
+    // console.log("advertiesHandel", prodact);
     fetch(`http://localhost:5000/product/${prodact}`, {
       method: "PUT",
       headers: {

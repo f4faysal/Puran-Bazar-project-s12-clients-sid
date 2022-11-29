@@ -26,7 +26,7 @@ const Login = () => {
     signin(email, password)
       .then((res) => {
         toast.success("Logine Success..");
-        setAuthToken(res.user)
+        setAuthToken(res)
         navigate(from, { replace: true });
       })
       .catch((err) => {
@@ -38,7 +38,7 @@ const Login = () => {
 
   const handelSignInWithGoogle = () => {
     signInWithGoogle().then((result) => {
-      setAuthToken(result.user , accuntType)
+      setAuthToken(result , accuntType)
       navigate(from, { replace: true });
 
       console.log("Google user :>> ", result);

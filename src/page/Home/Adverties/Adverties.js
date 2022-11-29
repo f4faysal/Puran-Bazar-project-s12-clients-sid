@@ -43,7 +43,7 @@ const Adverties = () => {
       <div className="hero  rounded p-5">
         <div className="hero-content flex-col lg:flex-row-reverse lg:gap-20 ">
           <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-5  items-center gap-4 justify-center justify-items-center">
-            {advatices?.map((item) => (
+          { false && advatices?.map((item) => (
               <ItemCard
                 key={item._id}
                 products={item}

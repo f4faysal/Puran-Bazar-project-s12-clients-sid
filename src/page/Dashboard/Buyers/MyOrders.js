@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 import ConfirmationModal from "../../../Components/ConfirmationModal/ConfirmationModal";
 import Spinner from "../../../Components/Spinner/Spinner";
 import { AuthContext } from "../../../contexts/AuthProvider";
@@ -9,9 +11,9 @@ const MyOrders = () => {
   const [deletingProdact, setDeletingProdact] = useState(null);
   const closeModal = () => {
     setDeletingProdact(null);
-}
+  };
 
-
+  console.log(user , "user Bookin" , user.email);
   const {
     data: bookings = [],
     isLoading,
@@ -34,33 +36,32 @@ const MyOrders = () => {
     },
   });
 
-
-  const handleDeleteBooking = (prodact) => {
-    // fetch(`http://localhost:5000/product/${prodact._id}`, {
-    //   method: "DELETE",
-    //   headers: {
-    //     authorization: `bearer ${localStorage.getItem("access-token")}`,
-    //   },
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     if (data.deletedCount > 0) {
-    //       refetch();
-    //       toast.success(`Booking ${prodact.title} deleted successfully`);
-    //     }
-    //   });
-    // console.log("delete ", prodact);
+  const handleDeleteBooking = (bookings) => {
+    fetch(`http://localhost:5000/bookings/${bookings._id}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("access-token")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          refetch();
+          toast.success(`Booking ${bookings.title} deleted successfully`);
+        }
+      });
+    // console.log("delete bookings ", bookings);
   };
 
   if (isLoading) {
     return <Spinner></Spinner>;
   }
 
-  console.log("bookings", bookings);
+  // console.log("bookings", bookings);
 
   return (
     <div>
-      <h3 className="text-3xl mb-5">My Appointments</h3>
+      <h3 className="text-3xl mb-5">My Booking</h3>
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>
@@ -80,37 +81,40 @@ const MyOrders = () => {
             {user.email &&
               bookings?.map((booking, i) => (
                 <tr key={booking._id}>
-                  <th>
+                  <td>
                     <div className="avatar">
                       <div className="w-24 rounded">
                         <img src={booking.featured_image} alt="" />
                       </div>
                     </div>
-                  </th>
+                  </td>
                   <td>{booking.title}</td>
                   <td>{booking.category}</td>
                   <td>{booking.condition_type}</td>
                   <td className="font-semibold">{booking.sell_price}</td>
                   <td>{booking.bookingDate}</td>
                   <td>{booking.meeting_location}</td>
-                  <td>{booking.slot}</td>
                   <td>
-                    {/* {booking.price && !booking.paid && (
+                    {/* {booking.price && !booking.paid && ( */}
+                    {true && true && (
                       <Link to={`/dashboard/payment/${booking._id}`}>
                         <button className="btn btn-primary btn-sm">Pay</button>
                       </Link>
                     )}
                     {booking.price && booking.paid && (
                       <span className="text-green-500">Paid</span>
-                    )} */}
+                    )}
                   </td>
-                  <th> <label
-                    // onClick={() => setDeletingProdact(produc)}
-                    htmlFor="confirmation-modal"
-                    className="btn btn-sm btn-error text-white"
-                  >
-                    Delete
-                  </label></th>
+                  <th>
+                    {" "}
+                    <label
+                      onClick={() => setDeletingProdact(booking)}
+                      htmlFor="confirmation-modal"
+                      className="btn btn-sm btn-error text-white"
+                    >
+                      Delete
+                    </label>
+                  </th>
                 </tr>
               ))}
           </tbody>

@@ -44,10 +44,11 @@ const Signup = () => {
         createUser(email, password)
           .then((result) => {
             //updateUserProfile
-            updateUserProfile(name, imgUrl);
-            setAuthToken(result.user, accountType);
-            navigate(from, { replace: true });
-            console.log(" result :>> ", result);
+            updateUserProfile(name, imgUrl).then(() => {
+              setAuthToken(result, accountType);
+              navigate(from, { replace: true });
+            });
+            // console.log(" result :>> ", result);
           })
           .catch((err) => console.log("err :>> ", err));
       })
@@ -56,7 +57,7 @@ const Signup = () => {
 
   const handelSignInWithGoogle = () => {
     signInWithGoogle().then((result) => {
-      setAuthToken(result.user , accuntType);
+      setAuthToken(result, accuntType);
       navigate(from, { replace: true });
       console.log("Google user :>> ", result);
     });
