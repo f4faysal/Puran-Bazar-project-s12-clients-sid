@@ -35,7 +35,7 @@ const AllBuyers = () => {
     fetch(`http://localhost:5000/users/user/${u._id}`, {
       method: "DELETE",
       headers: {
-        authorization: `bearer ${localStorage.getItem("access-token")}`,
+        authorization: `bearer ${localStorage.getItem("access-token")}`, 
       },
     })
       .then((res) => res.json())
@@ -45,14 +45,14 @@ const AllBuyers = () => {
           toast.success(`Buyers  ${u.email} deleted successfully`);
         }
       });
-    // console.log("delete Buyers  ", bookings);
+    
   };
 
   if (isLoading) {
     return <Spinner></Spinner>;
   }
 
-  // console.log("users---------------->", users);
+ 
 
   return (
     <div>
