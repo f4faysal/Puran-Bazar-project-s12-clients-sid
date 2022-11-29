@@ -1,8 +1,16 @@
-> Welcome to Puran Bazar!
-> [Puran Bazar](https://puran-bazar.web.app/)
-> In this project, I have implemented related to selling used (second-hand products) .
+# Welcome to Puran Bazar!
 
-`` `Buyers` `Sellers` `Admin will` ``
+> [Puran Bazar](https://puran-bazar.web.app/)
+
+[Alt text](/src/assets/logo-1.png "Puran Bazar")
+
+## In this project, I have implemented related to selling used (second-hand products) .
+
+## Here is Tocal 3 The Mood
+
+- `Buyers`
+- `Sellers`
+- `Admin `
 
 > ## Installation
 
