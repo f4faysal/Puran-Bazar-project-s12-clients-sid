@@ -39,17 +39,20 @@ const Adverties = () => {
 
   console.log("data", advatices);
   return (
-    <div className="mb-5 mt-5">
+    <div className="mb-5 mt-5 bg-gray-100 rounded-lg">.
+       <h1 className="text-center text-xl font-semibold text-secondary">Prodact Advatices</h1>
       <div className="hero  rounded p-5">
+     
         <div className="hero-content flex-col lg:flex-row-reverse lg:gap-20 ">
           <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-5  items-center gap-4 justify-center justify-items-center">
-          { false && advatices?.map((item) => (
-              <ItemCard
-                key={item._id}
-                products={item}
-                srtSookingItem={srtBookingItem}
-              ></ItemCard>
-            ))}
+            {advatices &&
+              advatices?.map((item) => (
+                <ItemCard
+                  key={item._id}
+                  products={item}
+                  srtSookingItem={srtBookingItem}
+                ></ItemCard>
+              ))}
           </div>
 
           {bookingItem && (

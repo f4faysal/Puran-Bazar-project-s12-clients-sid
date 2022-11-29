@@ -31,7 +31,7 @@ const Categories = () => {
     <div className="hero bg-primary mb-10">
       <div className="lg:hero-content lg:flex-col">
         <div className="flex flex-col lg:flex-row items-center w-full justify-between mt-2">
-          <h1 className="text-2xl lg:text-3xl font-semibold text-white">
+          <h1 className="text-2xl lg:text-3xl font-semibold text-secondary">
             Categories to Sell
           </h1>
           <Link

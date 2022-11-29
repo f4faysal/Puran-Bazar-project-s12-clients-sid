@@ -1,153 +1,160 @@
+import { Disclosure } from "@headlessui/react";
+import { ChevronUpIcon } from "@heroicons/react/20/solid";
 import React from "react";
 const Blog = () => {
   return (
-    <div className="H-100vh">
+    <div className="h-[100vh]">
       <div className="bacg-img flex justify-center items-center bg-cover bg-center">
-        <h1 className="text-5xl text-white">
+        <h1 className="text-5xl text-secondary">
           <span className="">Blog</span>
         </h1>
       </div>
-      <div className="p-5 w-full flex justify-center">
-        <div className="md:w-1/2 w-10/12">
-          <div
-            tabIndex={0}
-            className="  text-[#db7208] collapse collapse-plus border border-base-300 bg-base-300 rounded-box shadow-lg "
-          >
-            <div className="collapse-title text-xl font-medium">
-              Difference between sql and nosql ?
-            </div>
-            <div className="collapse-content">
-              <p className="text-white">
-                SQL is the programming language used to interface with
-                relational databases. (Relational databases model data as
-                records in rows and tables with logical links between them).{" "}
-                <samp className="font-semibold">
-                  NoSQL is a class of DBMs that are non-relational and generally
-                  do not use SQL
-                </samp>
-              </p>
+      <div className="w-full px-4 pt-16">
+        <div className="mx-auto w-full max-w-lg rounded-2xl bg-white p-2">
+          <Disclosure>
+            {({ open }) => (
+              <>
+                <Disclosure.Button className="flex w-full justify-between rounded-lg bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
+                  <span>
+                    What are the different ways to manage a state in a React
+                    application?
+                  </span>
+                  <ChevronUpIcon
+                    className={`${
+                      open ? "rotate-180 transform" : ""
+                    } h-5 w-5 text-purple-500`}
+                  />
+                </Disclosure.Button>
+                <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
+                  <span>
+                    There are four main types of state you need to properly
+                    manage in your React apps:
+                    <ul class="list-disc pl-10">
+                      <li>Local state</li>
+                      <li>Global state</li>
+                      <li>Server state</li>
+                      <li>URL state</li>
+                    </ul>
+                    <p>Let's cover each of these in detail:</p>
+                    <p>
+                      {" "}
+                      <span className="text-xl font-bold">
+                        Local (UI) state{" "}
+                      </span>{" "}
+                      – Local state is data we manage in one or another
+                      component.
+                    </p>
+                    <p>
+                      Local state is most often managed in React using the
+                      useState hook.
+                      <br />
+                      For example, local state would be needed to show or hide a
+                      modal component or to track values for a form component,
+                      such as form submission, when the form is disabled and the
+                      values of a form’s inputs.
+                    </p>
+                  </span>
+                </Disclosure.Panel>
+              </>
+            )}
+          </Disclosure>
 
-              <ul class="list-disc mx-3 my-2 text-gray-300">
-                <li>
-                  SQL databases are relational, NoSQL databases are
-                  non-relational.
-                </li>
-                <li>
-                  SQL databases use structured query language and have a
-                  predefined schema. NoSQL databases have dynamic schemas for
-                  unstructured data.
-                </li>
-                <li>
-                  SQL databases are vertically scalable, while NoSQL databases
-                  are horizontally scalable.
-                </li>
-                <li>
-                  SQL databases are table-based, while NoSQL databases are
-                  document, key-value, graph, or wide-column stores.
-                </li>
-                <li>
-                  SQL databases are better for multi-row transactions, while
-                  NoSQL is better for unstructured data like documents or JSON.
-                </li>
-              </ul>
-            </div>
-          </div>
-          {/* 2 */}
-          <div
-            tabIndex={0}
-            className="  text-[#db7208] collapse collapse-plus border border-base-300 bg-base-300 rounded-box shadow-lg mt-5 "
-          >
-            <div className="collapse-title text-xl font-medium">
-              What is JWT, and how does it work?
-            </div>
-            <div className="collapse-content">
-              <p className="text-white">
-                JSON Web Token (JWT) is{" "}
-                <samp className="font-semibold">
-                  an open standard (RFC 7519) that defines a compact and
-                  self-contained way for securely transmitting information
-                  between parties as a JSON object.
-                </samp>{" "}
-                This information can be verified and trusted because it is
-                digitally signed.
-              </p>
-              <p className="text-white mt-1">
-                JSON Web Token is an open industry standard used to share
-                information between two entities, usually a client (like your
-                app’s frontend) and a server (your app’s backend).
-              </p>
+          <Disclosure as="div" className="mt-2">
+            {({ open }) => (
+              <>
+                <Disclosure.Button className="flex w-full justify-between rounded-lg bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
+                  <span>How does prototypical inheritance work?</span>
+                  <ChevronUpIcon
+                    className={`${
+                      open ? "rotate-180 transform" : ""
+                    } h-5 w-5 text-purple-500`}
+                  />
+                </Disclosure.Button>
+                <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
+                  <span>
+                    <img
+                      className="float-right w-1/2"
+                      src="https://media.geeksforgeeks.org/wp-content/uploads/20200520193336/Untitled-Diagram108.png"
+                      alt=""
+                    />{" "}
+                    <p>
+                      {" "}
+                      Every object with its methods and properties contains an
+                      internal and hidden property known as [[Prototype]]. The
+                      Prototypal Inheritance is a feature in javascript used to
+                      add methods and properties in objects. It is a method by
+                      which an object can inherit the properties and methods of
+                      another object. Traditionally, in order to get and set the
+                      [[Prototype]] of an object, we use Object.getPrototypeOf
+                      and Object.setPrototypeOf. Nowadays, in modern language,
+                      it is being set using __proto__.
+                    </p>
+                  </span>
+                </Disclosure.Panel>
+              </>
+            )}
+          </Disclosure>
 
-              <p className="text-white mt-1">
-                They contain JSON objects which have the information that needs
-                to be shared. Each JWT is also signed using cryptography
-                (hashing) to ensure that the JSON contents (also known as JWT
-                claims) cannot be altered by the client or a malicious party.
-              </p>
-              <h1 className="text-xl">A JWT contains three parts:</h1>
-              <ul class="list-disc mx-3 my-2 text-gray-300">
-                <li>
-                Header: Consists of two parts:
-                <ul className="list-disc px-3">
-                  <li>The signing algorithm that’s being used.</li>
-                  <li>The type of token, which, in this case, is mostly “JWT”.</li>
-                </ul>
-                </li>
-                <li>
-                Payload: The payload contains the claims or the JSON object.
-                </li>
-                <li>
-                Signature: A string that is generated via a cryptographic algorithm that can be used to verify the integrity of the JSON payload.
+          <Disclosure as="div" className="mt-2">
+            {({ open }) => (
+              <>
+                <Disclosure.Button className="flex w-full justify-between rounded-lg bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
+                  <span>
+                    What is a unit test? Why should we write unit tests?
+                  </span>
+                  <ChevronUpIcon
+                    className={`${
+                      open ? "rotate-180 transform" : ""
+                    } h-5 w-5 text-purple-500`}
+                  />
+                </Disclosure.Button>
+                <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
+                  <img
+                    className="float-right w-1/2"
+                    src="https://www.guru99.com/images/1/Unit-Testing.png"
+                    alt=""
+                  />
+                  <p>
+                    The main objective of unit testing is to isolate written
+                    code to test and determine if it works as intended. Unit
+                    testing is an important step in the development process,
+                    because if done correctly, it can help detect early flaws in
+                    code which may be more difficult to find in later testing
+                    stages.
+                  </p>
+                </Disclosure.Panel>
+              </>
+            )}
+          </Disclosure>
 
-                </li>
-              </ul>
-            </div>
-          </div>
-          {/* 3 */}
-          <div
-            tabIndex={0}
-            className="  text-[#db7208] collapse collapse-plus border border-base-300 bg-base-300 rounded-box shadow-lg mt-5 "
-          >
-            <div className="collapse-title text-xl font-medium">
-            What is the difference between javascript and NodeJS?
-            </div>
-            <div className="collapse-content">
-              <p className="text-white">
-              JavaScript is a simple programming language that can be used with any browser that has the JavaScript Engine installed. Node. js, on the other hand, is an interpreter or execution environment for the JavaScript programming language.
-                <samp className="font-semibold">
-                JavaScript is a client-side scripting language that is lightweight, cross-platform, and interpreted. Both Java and HTML include it. Node.js, on the other hand, is a V8-based server-side programming language
-                </samp>
-              </p>
-
-           
-            </div>
-          </div>
-          {/*  4*/}
-          <div
-            tabIndex={0}
-            className="  text-[#db7208] collapse collapse-plus border border-base-300 bg-base-300 rounded-box shadow-lg mt-5 "
-          >
-            <div className="collapse-title text-xl font-medium">
-            How does NodeJS handle multiple requests at the same time?
-            </div>
-            <div className="collapse-content">
-              <p className="text-white">
-              
-                <samp className="font-semibold">
-                NodeJS receives multiple client requests and places them into EventQueue
-                </samp>
-                NodeJS is built with the concept of event-driven architecture. NodeJS has its own EventLoop which is an infinite loop that receives requests and processes them.
-              </p>
-              <p className="text-white">
-              
-                <samp className="font-semibold">
-                We know NodeJS application is single-threaded.
-                </samp>
-                 Say, if processing involves request A that takes 10 seconds, it does not mean that a request which comes after this request needs to wait 10 seconds to start processing because NodeJS event loops are only single-threaded. The entire NodeJS architecture is not single-threaded.
-              </p>
-
-           
-            </div>
-          </div>
+          <Disclosure as="div" className="mt-2">
+            {({ open }) => (
+              <>
+                <Disclosure.Button className="flex w-full justify-between rounded-lg bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
+                  <span> React vs. Angular vs. Vue?</span>
+                  <ChevronUpIcon
+                    className={`${
+                      open ? "rotate-180 transform" : ""
+                    } h-5 w-5 text-purple-500`}
+                  />
+                </Disclosure.Button>
+                <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
+                  <img
+                    className="float-right w-1/2"
+                    src="https://miro.medium.com/max/800/1*RtAQYp558yHr9UjZzDJmAg.jpeg"
+                    alt=""
+                  />
+                  <p>
+                    Vue provides higher customizability and hence is easier to
+                    learn than Angular or React. Further, Vue has an overlap
+                    with Angular and React with respect to their functionality
+                    like the use of components. Hence, the transition to Vue
+                    from either of the two is an easy option.
+                  </p>
+                </Disclosure.Panel>
+              </>
+            )}
+          </Disclosure>
         </div>
       </div>
     </div>
