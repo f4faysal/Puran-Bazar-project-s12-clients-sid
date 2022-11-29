@@ -2,7 +2,7 @@
 
 > [Puran Bazar](https://puran-bazar.web.app/)
 
-[Alt text](/src/assets/logo-1.png "Puran Bazar")
+<img src="/src/assets/logo-01.png" alt="Alt text" title="Puran Bazar">
 
 ## In this project, I have implemented related to selling used (second-hand products) .
 
