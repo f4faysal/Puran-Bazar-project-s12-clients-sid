@@ -84,9 +84,8 @@ const AddAProduct = () => {
             sell_price: data.price,
             location: data.location,
             featured_image: imgData.data.url,
-            seller :user.email,
-            status : "unsold"
-
+            seller: user.email,
+            status: "unsold",
           };
           console.log(addProduct);
 

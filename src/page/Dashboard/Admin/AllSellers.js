@@ -13,7 +13,7 @@ const AllSellers = () => {
   };
 
   const {
-    data: users = [],
+    data: seller = [],
     isLoading,
     refetch,
   } = useQuery({
@@ -48,6 +48,42 @@ const AllSellers = () => {
     // console.log("delete Buyers  ", bookings);
   };
 
+  const setVerify = (user) => {
+    //   axios.put(`http://user/active/${user?.user?.email}`, {
+    //     headers: {
+    //   authorization: `bearer ${localStorage.getItem("access-token")}`,
+    // },
+    // })
+    //     .then(res => {
+    //         console.log(res);
+
+    //     })
+    // sev user in db and grt token
+
+    fetch(`http://localhost:5000/user/active/${user?.email}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        authorization: `bearer ${localStorage.getItem("access-token")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount === 1) {
+          refetch();
+          toast.success(`The Seller  ${user.email} Verify successfully`);
+        }
+      });
+
+    // {
+    //   "acknowledged": true,
+    //   "modifiedCount": 1,
+    //   "upsertedId": null,
+    //   "upsertedCount": 0,
+    //   "matchedCount": 1
+    // }
+  };
+
   if (isLoading) {
     return <Spinner></Spinner>;
   }
@@ -60,34 +96,53 @@ const AllSellers = () => {
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>
-            <tr>
+            <tr className=" font-bold ">
               <th></th>
               <th>Seller Name</th>
               <th>Seller email</th>
+              <th>Status</th>
               <th>Accunt Type</th>
+              <th>Verify Seller</th>
               <th>ACTION</th>
             </tr>
           </thead>
           <tbody>
             {user.email &&
-              users?.map((u, i) => (
-                <tr key={u._id}>
+              seller?.map((s, i) => (
+                <tr key={s._id}>
                   <td>
-                    <div className="avatar">
-                      <div className="w-24 rounded">
-                        <img src={u?.user?.photoURL} alt="" />
-                        {console.log("zx", u.user)}
+                    <div
+                      className={`avatar ${s.status ? "online" : "offline"}`}
+                    >
+                      <div className="w-24 rounded-full">
+                        <img src={s?.user?.photoURL} alt="" />
+                        {console.log("zx", s.user)}
                       </div>
                     </div>
                   </td>
-                  <td>{u.user?.displayName}</td>
-                  <td>{u.email}</td>
-                  <td>{u.accountType}</td>
-                  {/* <td className="font-semibold">{u.}</td> */}
+                  <td className="font-semibold">{s.user?.displayName}</td>
+                  <td>{s.email}</td>
+                  <td className="font-bold">
+                    {s.status ? (
+                      <span className="text-green-600"> {s.status}</span>
+                    ) : (
+                      "unverifide"
+                    )}
+                  </td>
+                  <td>{s.accountType}</td>
+                  <td className="font-semibold">
+                    <label
+                      onClick={() => setVerify(s)}
+                      htmlFor="confirmation-modal"
+                      className="btn btn-sm btn-secondary text-white"
+                    >
+                      Verify
+                    </label>
+                  </td>
                   <th>
                     {" "}
                     <label
-                      onClick={() => setDeletingSeller(u)}
+                      onClick={() => setDeletingSeller(s)}
                       htmlFor="confirmation-modal"
                       className="btn btn-sm btn-error text-white"
                     >
@@ -114,5 +169,3 @@ const AllSellers = () => {
 };
 
 export default AllSellers;
-
-
