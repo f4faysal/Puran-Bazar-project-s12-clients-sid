@@ -22,7 +22,7 @@ const Payment = () => {
     condition_type,
   } = booking;
   return (
-    <div>
+    <div className="artboard phone-2">
       <h3 className="text-3xl">Payment for {title}</h3>
       <p className="text-xl">
         Please pay <strong>${sell_price}</strong> for your Catagory on{" "}
