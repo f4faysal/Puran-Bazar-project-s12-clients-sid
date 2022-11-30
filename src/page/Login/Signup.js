@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { setAuthToken } from "../../api/auth";
+import loginIMg from "../../assets/login.png";
 import PrimaryButton from "../../Components/Button/PrimaryButton";
 import SmallSpinner from "../../Components/Spinner/SmallSpinner";
 import { AuthContext } from "../../contexts/AuthProvider";
@@ -210,7 +211,7 @@ const Signup = () => {
         </p>
       </div>
       <div>
-        <img src="https://swap.com.bd/_nuxt/img/login-img.01f82b2.png" alt="" />
+        <img src={loginIMg} alt="" />
       </div>
     </div>
   );

@@ -40,7 +40,7 @@ const Adverties = () => {
   console.log("data", advatices);
   return (
     <div>
-      {advatices > 1 && (
+      {advatices  && (
         <div className="mb-5 mt-5 bg-gray-100 rounded-lg">
           <h1 className="text-center text-xl font-semibold text-secondary">
             Prodact Advatices

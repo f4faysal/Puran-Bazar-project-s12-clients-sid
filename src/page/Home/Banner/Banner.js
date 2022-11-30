@@ -1,7 +1,7 @@
 import React from "react";
-import img1 from "../../../assets/banner/1.jpg";
-import img2 from "../../../assets/banner/2.jpg";
-import img3 from "../../../assets/banner/3.jpg";
+import img2 from "../../../assets/banner/1.png";
+import img1 from "../../../assets/banner/2.png";
+import img3 from "../../../assets/banner/3.png";
 
 
 
