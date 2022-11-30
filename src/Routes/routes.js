@@ -7,6 +7,7 @@ import Blog from "../page/Blog/Blog";
 import AllBuyers from "../page/Dashboard/Admin/AllBuyers";
 import AllSellers from "../page/Dashboard/Admin/AllSellers";
 import MyOrders from "../page/Dashboard/Buyers/MyOrders";
+import Payment from "../page/Dashboard/Payment/Payment";
 import AddAProduct from "../page/Dashboard/Sellers/AddAProduct";
 import MyProducts from "../page/Dashboard/Sellers/MyProducts";
 import CategoriesAll from "../page/Home/Categories/CategoriesAll/CategoriesAll";
@@ -14,6 +15,7 @@ import CategoriseItem from "../page/Home/Categories/CategoriseItem/CategoriseIte
 import Home from "../page/Home/Home";
 import Login from "../page/Login/Login";
 import Signup from "../page/Login/Signup";
+import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
@@ -50,11 +52,11 @@ const router = createBrowserRouter([
       },
       {
         path: "*",
-        element: <Page404></Page404>
+        element: <Page404></Page404>,
       },
       {
         path: "/bglog",
-        element: <Blog></Blog>
+        element: <Blog></Blog>,
       },
     ],
   },
@@ -81,11 +83,25 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/all-bauyers",
-        element: <AllBuyers></AllBuyers>
+        element: (
+          <AdminRoute>
+            <AllBuyers></AllBuyers>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/all-sellers",
-        element: <AllSellers></AllSellers>
+        element: (
+          <AdminRoute>
+            <AllSellers></AllSellers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/payment/:id",
+        element: <Payment></Payment>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/bookings/pay/${params.id}`),
       },
     ],
   },
