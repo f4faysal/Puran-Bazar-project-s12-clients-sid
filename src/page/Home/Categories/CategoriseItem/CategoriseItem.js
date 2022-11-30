@@ -28,7 +28,7 @@ const CategoriseItem = () => {
     queryKey: ["products"],
     queryFn: async () => {
       try {
-        const url = `http://localhost:5000/products/${categoris.slug}`;
+        const url = `https://puran-bazar-server.vercel.app/products/${categoris.slug}`;
         // try cghat function handel to error
         const res = await fetch(url, {
           headers: {

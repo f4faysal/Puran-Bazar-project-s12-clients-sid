@@ -20,7 +20,7 @@ const AllSellers = () => {
     queryKey: ["users"],
     queryFn: async () => {
       try {
-        const res = await fetch(`http://localhost:5000/users/seller`, {
+        const res = await fetch(`https://puran-bazar-server.vercel.app/users/seller`, {
           headers: {
             authorization: `bearer ${localStorage.getItem("access-token")}`,
           },
@@ -32,7 +32,7 @@ const AllSellers = () => {
   });
 
   const handleDeleteSeller = (s) => {
-    fetch(`http://localhost:5000/users/seller/${s._id}`, {
+    fetch(`https://puran-bazar-server.vercel.app/users/seller/${s._id}`, {
       method: "DELETE",
       headers: {
         authorization: `bearer ${localStorage.getItem("access-token")}`,
@@ -60,7 +60,7 @@ const AllSellers = () => {
     //     })
     // sev user in db and grt token
 
-    fetch(`http://localhost:5000/user/active/${user?.email}`, {
+    fetch(`https://puran-bazar-server.vercel.app/user/active/${user?.email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

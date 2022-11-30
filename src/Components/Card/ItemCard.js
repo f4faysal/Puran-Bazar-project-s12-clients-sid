@@ -24,7 +24,7 @@ const ItemCard = ({ products, srtSookingItem }) => {
     queryKey: ["active"],
     queryFn: async () => {
       try {
-        const res = await fetch(`http://localhost:5000/users/seller/active`, {
+        const res = await fetch(`https://puran-bazar-server.vercel.app/users/seller/active`, {
           headers: {
             authorization: `bearer ${localStorage.getItem("access-token")}`,
           },
@@ -49,7 +49,7 @@ const ItemCard = ({ products, srtSookingItem }) => {
   // console.log(active, "activeactiveactive");
   // useEffect(() => {
   //   axios
-  //     .get(`http://localhost:5000/users/seller/active}`, {
+  //     .get(`https://puran-bazar-server.vercel.app/users/seller/active}`, {
   //       headers: {
   //         authorization: `bearer ${localStorage.getItem("access-token")}`,
   //       },

@@ -19,7 +19,7 @@ const AddAProduct = () => {
     formState: { errors },
   } = useForm();
 
-  const imageHostKey = "b44cfcd23ef7fd73c5884fdb49060a89"; //process.env.REACT_APP_imgbb_key;
+  const imageHostKey =  process.env.REACT_APP_api
 
   const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ const AddAProduct = () => {
     queryKey: ["categories"],
     queryFn: async () => {
       try {
-        const url = "http://localhost:5000/categories";
+        const url = "https://puran-bazar-server.vercel.app/categories";
         // try cghat function handel to error
         const res = await fetch(url, {
           headers: {
@@ -90,7 +90,7 @@ const AddAProduct = () => {
           console.log(addProduct);
 
           //   save products information to the database
-          fetch("http://localhost:5000/products", {
+          fetch("https://puran-bazar-server.vercel.app/products", {
             method: "POST",
             headers: {
               "content-type": "application/json",

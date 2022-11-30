@@ -17,7 +17,7 @@ const Adverties = () => {
     queryKey: ["advatices"],
     queryFn: async () => {
       try {
-        const url = `http://localhost:5000/advatices/${user.email}`;
+        const url = `https://puran-bazar-server.vercel.app/advatices/${user.email}`;
         // try cghat function handel to error
         const res = await fetch(url, {
           headers: {

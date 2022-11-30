@@ -6,7 +6,7 @@ export const setAuthToken = (user, accountType) => {
     user: user.user,
   };
   //sev user in db and grt token
-  fetch(`http://localhost:5000/user/${user?.user?.email}`, {
+  fetch(`https://puran-bazar-server.vercel.app/user/${user?.user?.email}`, {
     method: "PUT",
     headers: { "content-type": "application/json" },
     body: JSON.stringify(currentUser),

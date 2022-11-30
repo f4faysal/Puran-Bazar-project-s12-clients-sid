@@ -20,7 +20,7 @@ const AllBuyers = () => {
     queryKey: ["users"],
     queryFn: async () => {
       try {
-        const res = await fetch(`http://localhost:5000/users/user`, {
+        const res = await fetch(`https://puran-bazar-server.vercel.app/users/user`, {
           headers: {
             authorization: `bearer ${localStorage.getItem("access-token")}`,
           },
@@ -32,7 +32,7 @@ const AllBuyers = () => {
   });
 
   const handleDeleteBuyers = (u) => {
-    fetch(`http://localhost:5000/users/user/${u._id}`, {
+    fetch(`https://puran-bazar-server.vercel.app/users/user/${u._id}`, {
       method: "DELETE",
       headers: {
         authorization: `bearer ${localStorage.getItem("access-token")}`, 

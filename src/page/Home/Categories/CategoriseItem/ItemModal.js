@@ -47,7 +47,7 @@ const ItemModal = ({ bookingItem, refetch, srtBookingItem }) => {
     };
     console.log(booking, bookingItem);
 
-    fetch("http://localhost:5000/bookings", {
+    fetch("https://puran-bazar-server.vercel.app/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",

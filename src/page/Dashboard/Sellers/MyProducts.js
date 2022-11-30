@@ -25,7 +25,7 @@ const MyProducts = () => {
     queryKey: ["product"],
     queryFn: async () => {
       try {
-        const res = await fetch(`http://localhost:5000/product/${user.email}`, {
+        const res = await fetch(`https://puran-bazar-server.vercel.app/product/${user.email}`, {
           headers: {
             authorization: `bearer ${localStorage.getItem("access-token")}`,
           },
@@ -40,7 +40,7 @@ const MyProducts = () => {
 
   //prodact delete
   const handleDeletePodact = (prodact) => {
-    fetch(`http://localhost:5000/product/${prodact._id}`, {
+    fetch(`https://puran-bazar-server.vercel.app/product/${prodact._id}`, {
       method: "DELETE",
       headers: {
         authorization: `bearer ${localStorage.getItem("access-token")}`,
@@ -58,7 +58,7 @@ const MyProducts = () => {
 
   const advertiesHandel = (prodact) => {
     // console.log("advertiesHandel", prodact);
-    fetch(`http://localhost:5000/product/${prodact}`, {
+    fetch(`https://puran-bazar-server.vercel.app/product/${prodact}`, {
       method: "PUT",
       headers: {
         authorization: `bearer ${localStorage.getItem("acces-tsoken")}`,

@@ -35,7 +35,7 @@ const router = createBrowserRouter([
       {
         path: "/categories/:slug",
         loader: async ({ params }) =>
-          await fetch(`http://localhost:5000/categories/${params.slug}`, {
+          await fetch(`https://puran-bazar-server.vercel.app/categories/${params.slug}`, {
             headers: {
               authorization: `bearer ${localStorage.getItem("access-token")}`,
             },
@@ -101,7 +101,7 @@ const router = createBrowserRouter([
         path: "/dashboard/payment/:id",
         element: <Payment></Payment>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/bookings/pay/${params.id}`),
+          fetch(`https://puran-bazar-server.vercel.app/bookings/pay/${params.id}`),
       },
     ],
   },

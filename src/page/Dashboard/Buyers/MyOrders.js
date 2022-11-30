@@ -23,7 +23,7 @@ const MyOrders = () => {
     queryFn: async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/bookings/${user.email}`,
+          `https://puran-bazar-server.vercel.app/bookings/${user.email}`,
           {
             headers: {
               authorization: `bearer ${localStorage.getItem("access-token")}`,
@@ -37,7 +37,7 @@ const MyOrders = () => {
   });
 
   const handleDeleteBooking = (bookings) => {
-    fetch(`http://localhost:5000/bookings/${bookings._id}`, {
+    fetch(`https://puran-bazar-server.vercel.app/bookings/${bookings._id}`, {
       method: "DELETE",
       headers: {
         authorization: `bearer ${localStorage.getItem("access-token")}`,

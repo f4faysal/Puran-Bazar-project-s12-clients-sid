@@ -5,7 +5,7 @@ const useSeller = (email) => {
   const [isSellerLoading, setisSellerLoading] = useState(true);
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/users/account-type/${email}`)
+      fetch(`https://puran-bazar-server.vercel.app/users/account-type/${email}`)
         .then((res) => res.json())
         .then((data) => {
           console.log("Sellar => ", data);

@@ -15,7 +15,7 @@ const Signup = () => {
     verifyEmail,
     signInWithGoogle,
     loading,
-    setLoading
+    setLoading,
   } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -36,8 +36,7 @@ const Signup = () => {
     formData.append("image", image);
 
     // b44cfcd23ef7fd73c5884fdb49060a89
-    const url =
-      "https://api.imgbb.com/1/upload?key=b44cfcd23ef7fd73c5884fdb49060a89";
+    const url = process.env.REACT_APP_imgbblink;
 
     fetch(url, { method: "POST", body: formData })
       .then((res) => res.json())
@@ -53,14 +52,16 @@ const Signup = () => {
             });
             // console.log(" result :>> ", result);
           })
-          .catch((err) => {toast.error(err.message);
+          .catch((err) => {
+            toast.error(err.message);
             setLoading(false);
-            event.target.reset()});
+            event.target.reset();
+          });
       })
       .catch((err) => {
         toast.error(err.message);
         setLoading(false);
-        event.target.reset()
+        event.target.reset();
       });
   };
 
@@ -204,7 +205,10 @@ const Signup = () => {
         </div>
         <p className="px-6 text-sm text-center text-gray-400">
           Already have an account yet?{" "}
-          <Link to="/login" className="hover:underline text-green-700 hover:text-secondary font-semibold">
+          <Link
+            to="/login"
+            className="hover:underline text-green-700 hover:text-secondary font-semibold"
+          >
             Sign In
           </Link>
           .

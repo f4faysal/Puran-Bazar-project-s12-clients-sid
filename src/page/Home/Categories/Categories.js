@@ -10,7 +10,7 @@ const Categories = () => {
     queryKey: ["categories"],
     queryFn: async () => {
       try {
-        const url = "http://localhost:5000/categories";
+        const url = "https://puran-bazar-server.vercel.app/categories";
         // try cghat function handel to error
         const res = await fetch(url, {
           headers: {

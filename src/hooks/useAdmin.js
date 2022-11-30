@@ -5,7 +5,7 @@ const useAdmin = email => {
     const [isAdminLoading, setIsAdminLoading] = useState(true);
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:5000/users/account-admin/${email}`)
+            fetch(`https://puran-bazar-server.vercel.app/users/account-admin/${email}`)
                 .then(res => res.json())
                 .then(data => {
                     console.log("Admin => ", data);
