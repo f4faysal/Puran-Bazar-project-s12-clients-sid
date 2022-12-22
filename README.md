@@ -1,5 +1,7 @@
 # Welcome to Puran Bazar!
 
+### link : `https://puran-bazar.web.app/`
+
 > [Puran Bazar](https://puran-bazar.web.app/)
 
 <img src="/src/assets/logo-1.png" alt="Alt text" title="Puran Bazar">
